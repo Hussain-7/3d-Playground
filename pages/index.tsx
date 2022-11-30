@@ -15,7 +15,7 @@ const Home: NextPage = () => {
         {testing && <axesHelper args={[2]} />}
         {testing && <gridHelper args={[10, 10]} />}
         <OrbitControls />
-        <Trees />
+        <Trees boundry={4} count={5} />
         <Lights />
         <Ground />
       </Canvas>
