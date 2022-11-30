@@ -1,14 +1,14 @@
 import { NextPage } from "next";
-import { Canvas } from "@react-three/fiber";
-import { useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { Canvas, useThree } from "@react-three/fiber";
 import AnimatedBox from "../components/AnimatedBox";
+import CameraOrbitController from "../components/CameraOrbitController";
 
 
 const Home: NextPage = () => {
   return (
     <div className="container">
       <Canvas>
+        <CameraOrbitController />
         <ambientLight intensity={0.1} />
         <directionalLight color="red" position={[0, 0, 5]} />
         <AnimatedBox />
