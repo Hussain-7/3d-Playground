@@ -14,7 +14,7 @@ const Lights = (props: Props) => {
       <ambientLight intensity={0.2} />
       <directionalLight
         ref={lightRef}
-        position={[0, 20, 20]}
+        position={[0, 40, 50]}
         castShadow
         shadow-mapSize-width={1000}
         shadow-mapSize-height={1000}

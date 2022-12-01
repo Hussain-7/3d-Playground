@@ -19,9 +19,11 @@ const MyCube = () => {
   );
   console.log(model);
   useEffect(() => {
-    if (actions && actions?.Bounce) {
-      actions?.swipe.play();
-    }
+    // if (actions && actions?.Bounce) {
+      // actions?.swipe.stop();
+      // actions?.swipe.stop();
+    // }
+
   }, [actions]);
 
   return (
@@ -40,9 +42,9 @@ const Home: NextPage = () => {
         <Stats />
         {testing && <Stats />}
         {testing && <axesHelper args={[2]} />}
-        {testing && <gridHelper args={[10, 10]} />}
+        {testing && <gridHelper args={[100, 100]} />}
         <OrbitControls />
-        <Trees boundry={10} count={5} />
+        <Trees boundry={100} count={100} />
         <Lights />
         <MyCube />
         <Ground />
