@@ -1,33 +1,42 @@
 import { NextPage } from "next";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import {
   OrbitControls,
   Stats,
   useAnimations,
   useGLTF,
+  useFBX,
 } from "@react-three/drei";
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
 import Trees from "../components/Trees";
-import { useEffect, useState } from "react";
+import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 
-const MyCube = () => {
-  const model = useGLTF("./models/cube.glb");
+import { useEffect, useState } from "react";
+import { Object3D } from "three";
+
+const MyPlayer = () => {
+  const model = useGLTF("./models/Fox.glb");
   const { mixer, names, actions, clips } = useAnimations(
     model.animations,
     model.scene
   );
-  console.log(model);
+
+  console.log("model:", model);
   useEffect(() => {
-    // if (actions && actions?.Bounce) {
-    // actions?.swipe.stop();
-    // actions?.swipe.stop();
+    // if (actions && actions?.Idle) {
+      // console.log("actions:", actions.Idle);
+      // actions?.Survey?.play();
+      // actions?.swipe.stop();
     // }
   }, [actions]);
 
   return (
-    <object3D position={[0, 1, 0]}>
-      {" "}
+    <object3D scale={[
+      0.01,
+      0.01,
+      0.01
+    ]}>
       <primitive object={model.scene} />
     </object3D>
   );
@@ -45,7 +54,7 @@ const Home: NextPage = () => {
         <OrbitControls />
         <Trees boundry={100} count={100} />
         <Lights />
-        {/* <MyCube /> */}
+        <MyPlayer />
         <Ground />
       </Canvas>
     </div>
