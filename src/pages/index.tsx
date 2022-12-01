@@ -25,18 +25,14 @@ const MyPlayer = () => {
   console.log("model:", model);
   useEffect(() => {
     // if (actions && actions?.Idle) {
-      // console.log("actions:", actions.Idle);
-      // actions?.Survey?.play();
-      // actions?.swipe.stop();
+    // console.log("actions:", actions.Idle);
+    // actions?.Survey?.play();
+    // actions?.swipe.stop();
     // }
   }, [actions]);
 
   return (
-    <object3D scale={[
-      0.01,
-      0.01,
-      0.01
-    ]}>
+    <object3D scale={[0.03, 0.03, 0.03]}>
       <primitive object={model.scene} />
     </object3D>
   );
