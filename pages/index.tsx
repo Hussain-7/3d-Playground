@@ -9,7 +9,7 @@ import {
 import Lights from "../components/Lights";
 import Ground from "../components/Ground";
 import Trees from "../components/Trees";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const MyCube = () => {
   const model = useGLTF("./models/cube.glb");
@@ -20,10 +20,9 @@ const MyCube = () => {
   console.log(model);
   useEffect(() => {
     // if (actions && actions?.Bounce) {
-      // actions?.swipe.stop();
-      // actions?.swipe.stop();
+    // actions?.swipe.stop();
+    // actions?.swipe.stop();
     // }
-
   }, [actions]);
 
   return (
@@ -35,18 +34,18 @@ const MyCube = () => {
 };
 
 const Home: NextPage = () => {
-  const testing = true;
+  const [testMode, setTestMode] = useState(false);
   return (
     <div className="container">
       <Canvas shadows>
         <Stats />
-        {testing && <Stats />}
-        {testing && <axesHelper args={[2]} />}
-        {testing && <gridHelper args={[100, 100]} />}
+        {testMode && <Stats />}
+        {testMode && <axesHelper args={[2]} />}
+        {testMode && <gridHelper args={[100, 100]} />}
         <OrbitControls />
         <Trees boundry={100} count={100} />
         <Lights />
-        <MyCube />
+        {/* <MyCube /> */}
         <Ground />
       </Canvas>
     </div>
