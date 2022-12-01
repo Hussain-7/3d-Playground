@@ -12,24 +12,37 @@ import Ground from "../components/Ground";
 import Trees from "../components/Trees";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Object3D } from "three";
+import useInput from "../hooks/useInput";
 
 const MyPlayer = () => {
   const model = useGLTF("./models/Fox.glb");
+  const { foward, backward, left, right, jump, shift } = useInput();
   const { mixer, names, actions, clips } = useAnimations(
     model.animations,
     model.scene
   );
 
   console.log("model:", model);
+  const currentAction = useRef("");
   useEffect(() => {
-    // if (actions && actions?.Idle) {
-    // console.log("actions:", actions.Idle);
-    // actions?.Survey?.play();
-    // actions?.swipe.stop();
-    // }
-  }, [actions]);
+    let action = "";
+    if (foward || backward || left || right) {
+      action = "Walk";
+    } else if (shift) {
+      action = "Survey";
+    } else {
+      action = "none";
+    }
+    if (currentAction.current !== action) {
+      const nextActionToPlay = actions[action];
+      const current = actions[currentAction.current];
+      current?.fadeOut(0.2);
+      nextActionToPlay?.reset().fadeIn(0.2).play();
+      currentAction.current = action;
+    }
+  }, [foward, backward, left, right, jump, shift]);
 
   return (
     <object3D scale={[0.03, 0.03, 0.03]}>
