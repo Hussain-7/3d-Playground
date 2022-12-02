@@ -27,7 +27,7 @@ const Home: NextPage = () => {
         {testMode && <axesHelper args={[2]} />}
         {testMode && <gridHelper args={[100, 100]} />}
         <OrbitControls />
-        <Trees boundry={100} count={100} />
+        {/* <Trees boundry={100} count={100} /> */}
         <Lights />
         <Player />
         <Ground />
