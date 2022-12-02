@@ -7,7 +7,7 @@ type Props = {};
 const Lights = (props: Props) => {
   const lightRef = useRef<THREE.DirectionalLight>(null);
 
-  useHelper(lightRef, DirectionalLightHelper, 1, "red");
+  // useHelper(lightsRef, DirectionalLightHelper, 1, "red");
 
   return (
     <>
