@@ -16,19 +16,28 @@ import { useEffect, useRef, useState } from "react";
 import { Object3D } from "three";
 import useInput from "../hooks/useInput";
 import Player from "../components/Player";
+import MobileControls from "../components/MobileControls";
 
 const Home: NextPage = () => {
   const [testMode, setTestMode] = useState(false);
   return (
     <div className="container">
-      <Canvas shadows>
+      <MobileControls />
+
+      <Canvas
+        shadows
+        style={{
+          zIndex: 10,
+        }}
+      >
         <Stats />
         {testMode && <Stats />}
         {testMode && <axesHelper args={[2]} />}
         {testMode && <gridHelper args={[100, 100]} />}
         <OrbitControls />
-        {/* <Trees boundry={100} count={100} /> */}
+        <Trees boundry={100} count={100} />
         <Lights />
+        {/*  */}
         <Player />
         <Ground />
       </Canvas>

@@ -35,7 +35,7 @@ const useInput = () => {
       document.removeEventListener("keyup", handleKeyUp);
     };
   }, []);
-  return input;
+  return [input, setInput];
 };
 
 export default useInput;

@@ -45,7 +45,8 @@ const directionOffset = ({
 };
 const Player = () => {
   const model = useGLTF("./models/ninjacharacter.glb");
-  const { foward, backward, left, right, jump, shift } = useInput();
+  const [input, setInput] = useInput();
+  const { foward, backward, left, right, shift, jump } = input;
   const { mixer, names, actions, clips } = useAnimations(
     model.animations,
     model.scene
@@ -75,7 +76,7 @@ const Player = () => {
   };
   useEffect(() => {
     let action = "";
-    if (!shift &&(foward || backward || left || right)) {
+    if (!shift && (foward || backward || left || right)) {
       action = "walking";
     } else if (shift && (foward || backward || left || right)) {
       action = "Running";
